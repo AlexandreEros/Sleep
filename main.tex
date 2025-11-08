@@ -21,7 +21,6 @@
 \numberwithin{equation}{chapter}
 \numberwithin{figure}{chapter}
 \numberwithin{table}{chapter}
-\counterwithin{chapter}{part}
 
 \usepackage{titlesec}  
 \newcommand{\chapterbreak}{\clearpage}  
@@ -65,7 +64,7 @@
 \part{Dreams in culture \& the rise of sleep science}\label{part:culture}
 \newpage
 
-\chapter{Why Dreams Matter}\label{chp:why_dreams_matter}
+\chapter{Why Dreams Matter}\label{ch:why_dreams_matter}
 
 Dreams are more than nocturnal cinema: they sit where private phenomenology meets learning and creativity. This section first sorts the canonical ``dream discoveries'' into what is well-sourced versus apocryphal, then reframes the romantic \emph{Eureka} trope in light of what sleep science actually shows about insight and memory reorganization.
 
@@ -92,7 +91,7 @@ Below is a concise survey of major traditions—emphasizing primary sources and 
 \input{part1/why_dreams_matter/linguistic_note}
 
 
-\chapter{From couches to electrodes: a history of oneirology}\label{chp:history_oneirology}
+\chapter{From couches to electrodes: a history of oneirology}\label{ch:history_oneirology}
 
 \section{The Freudian Framework: Dreams as Wish-Fulfillment}
 \input{part1/history_oneirology/freud}
@@ -107,7 +106,7 @@ Below is a concise survey of major traditions—emphasizing primary sources and 
 \input{part1/history_oneirology/computational}
 
 
-\chapter{What survived the lab (myth-busting \& executive summary)}\label{chp:what_survived}
+\chapter{What survived the lab (myth-busting \& executive summary)}\label{ch:what_survived}
 
 \input{part1/what_survived/reintroduction}
 
@@ -125,27 +124,32 @@ Below is a concise survey of major traditions—emphasizing primary sources and 
 \part{The science of sleep: what’s established (and what isn’t)}\label{part:science_of_sleep}
 \newpage
 
-\chapter{Sleep architecture (states \& signals)}\label{chp:architecture}
+\chapter{Sleep Architecture}\label{ch:architecture}
 
-\section{The Human Hypnogram}
-\input{part2/sleep_architecture/hypnogram}
+Modern sleep science is built upon the discovery that sleep is not a monolithic state of passive rest, but a highly structured, dynamic process. This process is broadly divided into two distinct states, Non-Rapid Eye Movement (NREM) sleep and Rapid Eye Movement (REM) sleep, which cycle throughout the night~\cite{fuller2006}.
 
-\chapter{Core functions}\label{chp:core_functions}
+\input{part2/sleep_architecture/nrem}
+\input{part2/sleep_architecture/rem}
+\input{part2/sleep_architecture/cycle}
 
-\section{The Offline Brain: Sleep as a Memory Consolidation Phase}
-\input{part2/core_functions/consolidation}
+\chapter{The Functions of Sleep: Far More than Rest}\label{ch:functions}
 
-\section{Homeostasis and Clearance}
-\input{part2/core_functions/clearance}
+For centuries, the function of sleep was a mystery. We now understand it is not a passive state but an active, critical period for brain maintenance, memory processing, and cognitive generalization. The two major sleep states, NREM and REM, appear to have evolved distinct but complementary functions.
 
-\chapter{Dream Phenomenology Across States}
-The subjective ``feel'' of dreaming changes dramatically depending on the sleep stage from which a person is awakened.
+\input{part2/functions/maintenance_trio}
+\input{part2/functions/consolidation}
+\input{part2/functions/generalization}
 
-\section{Hypnagogia (N1) and NREM (N2/N3) Dreams}
+
+\chapter{Dreams: The Phenomenology of Sleep}\label{ch:phenomenology}
+
+If sleep is a functional algorithm, dreams are its cognitive-perceptual output. The \textit{phenomenology} of dreaming—the "what it is like" to dream—is not a mere epiphenomenon. The bizarre, associative, and often emotional nature of our dreams provides the most direct, first-person evidence for the computational functions of sleep.
+
+\input{part2/phenomenology/hypnagogia}
 \input{part2/phenomenology/nrem}
-
-\section{REM Dreams}
 \input{part2/phenomenology/rem}
+\input{part2/phenomenology/lucid}
+\input{part2/phenomenology/content}
 
 \section{Summary of the States of Consciousness}
 \input{part2/phenomenology/table}
@@ -153,15 +157,14 @@ The subjective ``feel'' of dreaming changes dramatically depending on the sleep 
 \section{The Content of Human Dreams: Senses and Themes}
 \input{part2/phenomenology/content}
 
-\chapter{Comparative \& Evolutionary Scope}\label{chp:comparative_scope}
+\chapter{Comparative \& Evolutionary Scope}\label{ch:evolution}
 
-\section{The Universal Mandate: Deep Evolutionary Origins of Sleep}
 \input{part2/evolution/universality}
 
 \section{Dream Modalities across the Tree of Life}
 \input{part2/evolution/comparison}
 
-\chapter{What fails when we remove sleep}\label{chp:what_fails}
+\chapter{What fails when we remove sleep}\label{ch:what_fails}
 
 \section{The Socioeconomic Costs of Sleep Deprivation}
 \input{part2/deprivation/losses}
@@ -180,7 +183,7 @@ The subjective ``feel'' of dreaming changes dramatically depending on the sleep 
 \part{The Overfitted-Brain Hypothesis: A Unifying Account}\label{part:obh}
 \newpage
 
-\chapter{The Overfitted-Brain Hypothesis (OBH)}\label{chp:obh}
+\chapter{The Overfitted-Brain Hypothesis (OBH)}\label{ch:obh}
 
 \section{Machine Learning Parallels}
 \input{part3/overfitting_hypothesis/ml}
@@ -192,7 +195,7 @@ The subjective ``feel'' of dreaming changes dramatically depending on the sleep 
 \input{part3/overfitting_hypothesis/bizareness}
 
 
-\chapter{Sleep According to the Hypothesis}\label{chp:nightly_alternation}
+\chapter{Sleep According to the Hypothesis}\label{ch:nightly_alternation}
 
 \section{The GANs Model: A Mechanism for Generating Bizarre Training Data}
 \input{part3/nightly_alternation/gan}
@@ -203,13 +206,13 @@ The subjective ``feel'' of dreaming changes dramatically depending on the sleep 
 \section{Schematic of the NREM/REM Cycle}
 \input{part3/nightly_alternation/schematic}
 
-\chapter{When the offline cycle fails}\label{chp:offline_failure}
+\chapter{When the offline cycle fails}\label{ch:offline_failure}
 
 \section{The `Overfitting Failure' Model of Psychosis}
 \input{part3/nightly_alternation/psychosis_obh}
 
 
-\chapter{Harnessing the night: applications}\label{chp:harnessing}
+\chapter{Harnessing the night: applications}\label{ch:harnessing}
 
 \section{Dream Incubation: From Ancient Ritual to Modern Science}
 \input{part3/harnessing/incubation}
@@ -220,16 +223,16 @@ The subjective ``feel'' of dreaming changes dramatically depending on the sleep 
 \section{Lucid Dreaming: The Dreamer as Agent}
 \input{part3/harnessing/lucid}
 
-\chapter{Beyond Earth: Convergence and Universality}\label{chp:universality}
+\chapter{Beyond Earth: Convergence and Universality}\label{ch:universality}
 \section{Astrobiological Cognition}
 \input{part3/beyond/astrobiology}
 
 
-\chapter{Falsifiability}\label{chp:falsifiability}
+\chapter{Falsifiability}\label{ch:falsifiability}
 \section{Next Experiments}
 \input{part3/falsifiability/todo}
 
-\part*{Conclusion}\label{chp:conclusion}
+\part*{Conclusion}\label{ch:conclusion}
 \addcontentsline{toc}{part}{Conclusion}
 \input{conclusion}
 
