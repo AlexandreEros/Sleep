@@ -1,0 +1,256 @@
+\documentclass[a4paper]{report}
+
+% Geometry & typography
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{chngcntr}
+
+% Language & fonts
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Math, tables, graphics
+\usepackage{amsmath, booktabs, tabularx, graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage[numbers,square]{natbib}
+
+% Numbering resets per chapter
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\counterwithin{chapter}{part}
+
+\usepackage{titlesec}  
+\newcommand{\chapterbreak}{\clearpage}  
+\usepackage{tocloft}  
+\setlength{\cftchapnumwidth}{3em}  
+\setlength{\cftsecnumwidth}{3em}  
+
+
+% Hyperlinks last + helpers
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true, 
+  linkcolor=black, 
+  urlcolor=blue, citecolor=blue,
+  pdftitle={The Architecture of the Night}, 
+  pdfauthor={Anonymous}
+}
+\usepackage{bookmark}
+\usepackage[nameinlink]{cleveref}
+
+
+% --- DOCUMENT START ---
+
+\title{The Architecture of the Night: An Integrative Analysis of the Phenomenology, Neurobiology, and Function of Sleep and Dreaming}
+\author{} 
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% --- ABSTRACT ---
+\begin{abstract}
+\noindent Sleep and dreaming, while biologically universal, have long posed a functional puzzle. This paper synthesizes findings from neuroscience, comparative biology, and computational modeling to posit an integrative model of sleep as a multi-stage cognitive algorithm essential for learning. We propose that NREM sleep primarily serves to consolidate episodic memory via neural replay, while REM sleep functions to generalize this knowledge, preventing the cognitive "overfitting" seen in artificial intelligence. This "overfitted brain hypothesis" reframes the characteristic bizarreness of dreams as a crucial, functional injection of "adversarial" data, enhancing cognitive flexibility. We review the phenomenological evidence for this model, from the procedural memory processing of the "Tetris effect" in hypnagogia to the species-specific dream content in mammals and the convergent evolution of a REM-like "active sleep" in octopuses. Finally, we explore the pathological (psychosis from sleep deprivation) and practical (lucid dreaming, targeted dream incubation) implications of this computational framework, concluding that sleep is a non-negotiable process for maintenance and generalization in any complex, learning nervous system.
+\end{abstract}
+% --- END ABSTRACT ---
+
+\tableofcontents
+
+\newpage
+\part{Dreams in culture \& the rise of sleep science}
+\label{part:culture}
+\newpage
+
+\chapter{Why Dreams Matter}
+\label{chp:why_dreams_matter}
+
+Dreams are more than nocturnal cinema: they sit where private phenomenology meets learning and creativity. This section first sorts the canonical “dream discoveries” into what is well–sourced versus apocryphal, then reframes the romantic \emph{Eureka} trope in light of what sleep science actually shows about insight and memory reorganization.
+
+The cultural meanings of sleep and dreams are vast and multifaceted: healing and divination; ethics and law; philosophy and identity; spiritual training and bodily technique.  
+
+Below is a concise survey of major traditions—emphasizing primary sources and key reference works—and indications of where this material will later connect to empirical evidence in Part~II.
+
+\section{The Ancient Near East and Mediterranean}
+\input{part1/why_dreams_matter/mediterranean_and_middle_east}
+
+\section{The Abrahamic and Medieval Worlds}
+\input{part1/why_dreams_matter/abrahamic}
+
+\section{South and East Asia}
+\input{part1/why_dreams_matter/asia}
+
+\section{Indigenous and Anthropological Perspectives}
+\input{part1/why_dreams_matter/indigenous}
+
+\section{Recurring Themes and Synthesis}
+\input{part1/why_dreams_matter/recurring_themes}
+
+\section{Linguistic Note: “Dream” as Vision and Aspiration}
+\input{part1/why_dreams_matter/linguistic_note}
+
+
+\chapter{From couches to electrodes: a history of oneirology}
+\label{chp:history_oneirology}
+
+\section{The Freudian Framework: Dreams as Wish-Fulfillment}
+\input{part1/history_oneirology/freud}
+
+\section{The Objective Revolution: The Discovery of REM Sleep}
+\input{part1/history_oneirology/rem_revolution}
+
+\section{The Neurobiological Rebuttal: The Activation-Synthesis Hypothesis}
+\input{part1/history_oneirology/activation_synthesis}
+
+\section{The Computational Turn}
+\input{part1/history_oneirology/computational}
+
+
+\chapter{What survived the lab (myth-busting \& executive summary)}
+\label{chp:what_survived}
+
+\input{part1/what_survived/reintroduction}
+
+\section{Oneiric origins of discovery: famous cases, fact vs. myth}
+\input{part1/what_survived/famous_eurekas}
+
+\section{Deconstructing the Eureka Myth: Dreams as Synthesis, Not Revelation}
+\input{part1/what_survived/deconstructing}
+
+\section{Reconstructing}
+\input{part1/what_survived/reconstructing}
+
+
+\newpage
+\part{The science of sleep: what’s established (and what isn’t)}
+\label{part:science_of_sleep}
+\newpage
+
+\chapter{Sleep architecture (states \& signals)}
+\label{chp:architecture}
+
+\section{The Human Hypnogram}
+\input{part2/sleep_architecture/hypnogram}
+
+\chapter{Core functions}
+\label{chp:core_functions}
+
+\section{The Offline Brain: Sleep as a Memory Consolidation Phase}
+\input{part2/core_functions/consolidation}
+
+\section{Homeostasis and Clearance}
+\input{part2/core_functions/clearance}
+
+\chapter{Dream Phenomenology Across States}
+The subjective "feel" of dreaming changes dramatically depending on the sleep stage from which a person is awakened.
+
+\section{Hypnagogia (N1) and NREM (N2/N3) Dreams}
+\input{part2/phenomenology/nrem}
+
+\section{REM Dreams}
+\input{part2/phenomenology/rem}
+
+\section{Summary of the States of Consciousness}
+\input{part2/phenomenology/table}
+
+\section{The Content of Human Dreams: Senses and Themes}
+\input{part2/phenomenology/content}
+
+\chapter{Comparative \& Evolutionary Scope}
+\label{chp:comparative_scope}
+
+\section{The Universal Mandate: Deep Evolutionary Origins of Sleep}
+\input{part2/evolution/universality}
+
+\section{Dream Modalities across the Tree of Life}
+\input{part2/evolution/comparison}
+
+\chapter{What fails when we remove sleep (constraint setting)}
+\label{chp:what_fails}
+
+\section{The Socioeconomic Costs of Sleep Deprivation}
+\input{part2/deprivation/losses}
+
+\section{Extreme Deprivation: A Descent into Psychosis}
+\input{part2/deprivation/psychosis}
+
+\section{Myths of 'Cheating' Sleep}
+\input{part2/deprivation/cheating}
+
+\section{Stage-Selective Deficits}
+\input{part2/deprivation/stage_selective}
+
+
+\newpage
+\part{The Overfitted-Brain Hypothesis: A Unifying Account}
+\label{part:obh}
+\newpage
+
+\chapter{The Overfitted-Brain Hypothesis (OBH)}
+\label{chp:obh}
+
+\section{Machine Learning Parallels}
+\input{part3/overfitting_hypothesis/ml}
+
+\section{From Tetris Effect to Synaptic Homeostasis}
+\input{part3/overfitting_hypothesis/tetris}
+
+\section{The Computational Reason for Bizarreness}
+\input{part3/overfitting_hypothesis/bizareness}
+
+
+\chapter{Sleep According to the Hypothesis}
+\label{chp:nightly_alternation}
+
+\section{The GANs Model: A Mechanism for Generating Bizarre Training Data}
+\input{part3/nightly_alternation/gan}
+
+\section{A Unified Theory of Sleep Function and Consciousness}
+\input{part3/nightly_alternation/unified_theory}
+
+\section{Schematic of the NREM/REM Cycle}
+\input{part3/nightly_alternation/schematic}
+
+\chapter{When the offline cycle fails}
+\label{chp:offline_failure}
+
+\section{The 'Overfitting Failure' Model of Psychosis}
+\input{part3/nightly_alternation/psychosis_obh}
+
+
+\chapter{Harnessing the night: applications}
+\label{chp:harnessing}
+
+\section{Dream Incubation: From Ancient Ritual to Modern Science}
+\input{part3/harnessing/incubation}
+
+\section{Targeted Dream Incubation (TDI): Mechanizing the Hypnagogic Sweet Spot}
+\input{part3/harnessing/tdi}
+
+\section{Lucid Dreaming: The Dreamer as Agent}
+\input{part3/harnessing/lucid}
+
+\chapter{Beyond Earth: Convergence and Universality}
+\label{chp:universality}
+\section{Astrobiological Cognition}
+\input{part3/beyond/astrobiology}
+
+
+\chapter{Falsifiability}
+\label{chp:falsifiability}
+\section{Next Experiments}
+\input{part3/falsifiability/todo}
+
+\chapter{Conclusion}
+\label{chp:conclusion}
+\input{conclusion}
+
+
+\newpage
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
