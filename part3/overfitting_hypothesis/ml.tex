@@ -1,3 +1,137 @@
-\section{Machine Learning Parallels}\label{sec:obh_ml}
+\section{Machine Learning Primer}\label{sec:ml}
 
-\textit{[Placeholder: Insert 3-4 ML primers on overfitting, L2 regularization, data augmentation, and adversarial examples + 2-3 consolidation reviews to tie these concepts directly to the sleep literature.]}
+This section is a very short crash course on machine learning, aimed at readers with no prior background.
+
+The goal is not to teach machine learning in general, but to introduce a handful of concepts that a reader will need to understand the Overfitted-Brain Hypothesis (OBH). We will cover:
+
+\begin{itemize}
+    \item \textbf{Training vs. generalization}
+    \item \textbf{Overfitting}
+    \item \textbf{Regularization (especially weight decay / L2)}
+    \item \textbf{Data augmentation}
+    \item \textbf{Adversarial examples and adversarial training}
+    \item \textbf{Generative adversarial networks (GANs)}
+\end{itemize}
+
+Later in this part, we will map each of these to specific features of sleep and dreams.
+
+
+\subsection{Models, training, and generalization}\label{sec:ml_models_training_generalization}
+
+A typical machine learning system is trained from examples. Imagine we want a model that can take in an image and say whether it contains a cat or a dog. We show it thousands of labeled examples:
+
+\begin{itemize}
+    \item \textbf{Input:} An array of pixels representing an image.
+    \item \textbf{Target:} A label indicating the category, such as ``cat'', ``dog'', or ``none''.
+\end{itemize}
+
+During \emph{training}, the model adjusts its internal parameters (\emph{weights}) to reduce some \emph{loss function}: a numerical measure of how wrong its predictions are on these training examples. This is usually done with gradient descent or a variant thereof.
+
+However, what we actually care about is not how well the model does on the images it has already seen, but how well it will do when it encounters new images. This ability to perform well on unseen data is called \emph{generalization}. A model that performs well on the training set but poorly on new data is said to have \emph{overfitted} \citep{ibm_overfitting}.
+
+The standard way to detect overfitting in practice is to split data into at least two sets:
+
+\begin{itemize}
+    \item A \textbf{training set}, used to adjust the weights.
+    \item A \textbf{validation} or \textbf{test set}, held out from training.
+\end{itemize}
+
+If training error goes down but validation/test error goes up, the model is starting to memorize rather than learn \citep{aws_overfitting}.
+
+The brain has a similar problem: it trains on the experiences of each day, but it must continue to behave sensibly in new situations. OBH essentially claims that sleep is part of the generalization-supporting machinery.
+
+
+\subsection{Overfitting}\label{sec:ml_overfitting}
+
+In machine learning, \emph{overfitting} happens when a model becomes too specialized to the quirks and noise of the training set. It fits every little wrinkle of the examples it has seen, but those wrinkles do not reflect the deeper regularities of the world. As a result, performance on the training data continues to improve, while performance on fresh data stagnates or worsens \citep{ibm_overfitting}.
+
+Intuitively:
+
+\begin{itemize}
+    \item A perfect memorizer of your history exam might recall the exact phrasing of each question and answer, but fail as soon as the same facts are asked in different words.
+    \item Likewise, an overfitted network may classify every training dog picture correctly, but mislabel a new dog picture because the background grass looks slightly different.
+\end{itemize}
+
+In OBH terms, the waking brain constantly updates itself on the basis of extremely limited and noisy samples of the world: the specific people, places, and situations we encounter. Without some mechanism to keep the internal model from clinging too tightly to that day's details, the brain risks becoming overfitted to recent episodes.
+
+
+\subsection{Regularization and Weight Decay (L2)}\label{sec:ml_regularization}
+
+To fight overfitting, machine learning practitioners introduce \emph{regularization}---extra constraints or penalties on the model that discourage excessively complex or brittle solutions.
+
+One of the simplest and most widely used forms is \emph{L2 regularization}, also known (in deep learning practice) as \textbf{weight decay}. In L2 regularization, we modify the loss function by adding a term that grows with the squared magnitude of the weights. Intuitively, the model is encouraged to keep its parameters small rather than letting any single connection become extremely strong \citep{benihime91_weight_decay}.
+
+In symbols, if $L_{\text{task}}$ is the original loss (how wrong the model is on the task), the regularized loss might be:
+
+\[
+L_{\text{total}} = L_{\text{task}} + \lambda \sum_i w_i^2,
+\]
+
+where $w_i$ are the model's weights and $\lambda$ controls how strong the penalty is.
+
+This tends to favor smoother, simpler functions that generalize better. In OBH, synaptic downscaling during NREM sleep plays a role similar to weight decay: the brain reduces the strength of connections that are not strongly and consistently supported, preventing any one pattern of activity from dominating simply because it happened to be reinforced by a limited sample of experiences.
+
+
+\subsection{Data Augmentation}\label{sec:ml_data_augmentation}
+
+Another powerful anti-overfitting trick is \emph{data augmentation}. Instead of changing the model, we change (or expand) the data. Starting from real examples, we generate modified versions that preserve the correct label but differ in superficial ways \citep{datacamp_data_augmentation}.
+
+For images, this might include:
+
+\begin{itemize}
+    \item Rotating, flipping, or slightly scaling the picture
+    \item Adding small amounts of noise
+    \item Slightly changing brightness or color
+\end{itemize}
+
+All of these produce new images that are still the same class (a rotated cat is still a cat), but force the model to learn the underlying concepts (``cat-ness'') instead of memorizing specific pixel patterns.
+
+OBH claims that REM dreams implement a biological version of data augmentation: replaying recent experiences in distorted, recombined, and ``bizarre'' forms that preserve high-level structure (themes, threats, social dynamics) while scrambling low-level details. That is precisely what a good augmentation pipeline does for a neural network.
+
+\subsection{Adversarial Training}\label{sec:ml_adversarial_training}
+
+Deep networks are often vulnerable to \emph{adversarial examples}: inputs that look normal to humans but have been slightly modified in carefully chosen ways so that the model confidently misclassifies them \citep{datascientest_adversarial_examples}. A picture of a panda can be altered by adding a tiny, human-imperceptible pattern of noise, causing a classifier to declare it a ``gibbon'' with high confidence. See \Cref{fig:fgsm_panda}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{fgsm_panda_image.png}
+  \caption{Illustrative FGSM adversarial example from \citep{goodfellow2014explaining}: adding a human-imperceptible perturbation to a panda image causes a classifier to predict ``gibbon'' with high confidence.}\label{fig:fgsm_panda}
+\end{figure}
+
+These adversarial perturbations expose ``blind spots'' or brittle decision boundaries in the model---regions of input space where its internal representation is misleading.
+
+There is an entire subfield devoted to adversarial training, where the model is explicitly trained on adversarially perturbed inputs. The procedure is:
+
+\begin{enumerate}
+    \item Take a normal training example.
+    \item Find a small perturbation that would fool the current model.
+    \item Train the model not just on the original, but on the perturbed version, with the correct label.
+\end{enumerate}
+
+This process forces the model to become robust: it learns to classify correctly even under hostile distortions.
+
+In OBH, we will treat certain features of REM dreams---unusual juxtapositions, exaggerated threats, strange social scenarios---as a kind of internal adversarial training set: internally generated ``attacks'' on our mental models that reveal where they are brittle, so the brain can adjust.
+
+\subsection{Generative Adversarial Networks (GANs)}
+
+Finally, we will lean on an analogy to \textbf{generative adversarial networks} (GANs). A GAN consists of two neural networks trained together: a \textbf{generator}, which tries to produce fake samples (e.g., fake images of faces), and a \textbf{discriminator}, which tries to tell real images from generated ones \citep{wikipedia_gan}.
+
+\begin{itemize}
+    \item The generator takes random noise and outputs a candidate image.
+    \item The discriminator looks at images and outputs ``real'' vs ``fake''.
+    \item The generator is rewarded when it fools the discriminator; the discriminator is rewarded when it correctly detects fakes.
+\end{itemize}
+
+Through this adversarial game, the generator gradually learns to produce outputs that look increasingly ``real'' according to the discriminator's evolving standards. Meanwhile, the discriminator becomes more skilled at detecting subtle flaws.
+
+In OBH, the analogy is not one-to-one, but it is suggestive:
+
+\begin{itemize}
+    \item Waking life provides \textbf{real} data about the world.
+    \item During sleep, the brain can internally generate ``fake'' scenarios (dreams), evaluate them, and adjust its internal models accordingly.
+    \item Different sleep stages may play roles loosely analogous to ``generator'' and ``discriminator'': some phases emphasize replay and synthesis of new scenarios, others emphasize evaluation and down-selection.
+\end{itemize}
+
+Later in this part, we will flesh out the analogy in more detail. For now, the key takeaway is that modern machine learning has converged on a family of strategies---regularization, augmentation, adversarial examples, and adversarial training---that solve exactly the problem the brain faces: how to keep a powerful learning system from overfitting to the narrow slice of data it has recently seen.
+
+Sleep, on OBH, is the brain's way of running these strategies offline.
