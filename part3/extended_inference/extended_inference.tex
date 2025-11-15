@@ -1,0 +1,34 @@
+\section{Hierarchical Learners Without Rest}\label{sec:hierarchical_without_rest}
+Large language models and exhausted humans share a simple constraint: both are hierarchical predictive systems that keep
+integrating inputs without a break to reorganize what they have learned. Transformer studies now document universal degradation
+during extended inference, independent of scale \citep{patel2025multiturn}. The attention-sink phenomenon shows why: self-attention
+must distribute probability mass, so models dump weight into the earliest tokens to satisfy softmax normalization, even when
+those tokens are semantically irrelevant \citep{chen2023attention_sink}. Longer contexts then act as low-pass filters, collapsing
+representations toward bland averages and erasing distinctions between ideas \citep{li2024lengthcollapse}. Models also overfit to the
+sequence-length distribution they saw during training \citep{varis2021length}. Remove consolidation, and the system latches onto
+whatever pattern was present first, then treats length itself as signal.
+
+\section{Precision, Overconfidence, and Meta-Control Failure}\label{sec:precision_dysregulation}
+Franklin and colleagues term this trajectory \textit{precision dysregulation}: priors become so confident that new evidence cannot
+move them, while prediction errors lose the precision that would normally trigger updating \citep{franklin2023precision}. Sleep
+deprivation studies show an identical signature at the behavioral level. After a single night without sleep, participants can still
+respond accurately on repetition trials but fail catastrophically on task switches \citep{couyoumdjian2010}. Follow-up work demonstrates
+that the failure is specific to cognitive flexibility rather than global slowing \citep{slama2018}, and a meta-analysis confirms that
+top-down control suffers more than simple storage or vigilance \citep{garcia2021}. In both silicon and cortex, the core computation is
+intact, but the system that allocates precision to different goals has gone offline.
+
+\section{Parallels Between Sleep-Deprived Brains and Overrun Transformers}\label{sec:parallels_brains_llms}
+Once precision weights drift, both systems perseverate. Transformer responses grow verbose, chase early assumptions, and recycle
+errors across turns \citep{patel2025multiturn}. Sleep-deprived, stimulant-supported brains feel intensely awake yet cannot disengage from
+the current thought, exactly the ``catastrophic executive control failure with preserved low-level capacity'' observed clinically
+\citep{franklin2023precision}. Amphetamines hold arousal steady but leave precision gating ruined; likewise, streaming inference tricks keep
+LLMs processing tokens but do not re-regularize their internal representations \citep{chen2023attention_sink, li2024lengthcollapse}. The
+computational parallel is meaningful at Marr's computational level even though the mechanisms differ.
+
+\section{What This Tells Us About the Need for a Sleep Phase}\label{sec:need_sleep_phase}
+The Overfitted Brain Hypothesis predicts that any learner exposed to finite data must inject noise, replay, or adversarial sampling
+to avoid memorizing spurious correlations \citep{hoel2021overfitted}. Extended inference makes it clear that transformers lack such a phase: there is
+no weight decay, dropout, or generative rehearsal between tokens. Biological brains achieve it through the nightly NREM/REM alternation;
+engineers are now experimenting with weight-renormalization pulses, offline replay buffers, and stochastic attention dropout inspired by
+sleep to stabilize continual learning. The bidirectional lesson is stark: without a protected offline cycle, even the most advanced
+hierarchical models---organic or synthetic---lose the flexibility that makes them intelligent in the first place.
