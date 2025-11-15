@@ -1,3 +1,29 @@
-\section{Next Experiments}\label{sec:falsifiability_next_experiments}
+\section{Predictions}\label{sec:falsifiability_predictions}
+The OBH makes quantitative commitments that distinguish it from generic ``sleep is good'' statements. Among them:
+\begin{enumerate}
+    \item \textbf{Stage-specific tradeoffs.} If NREM is the maintenance-and-consolidation phase while REM injects stochastic
+    rehearsal, then selectively suppressing REM should impair transfer/generalization tasks while sparing rote recall, whereas
+    selective slow-wave suppression should do the reverse \citep{diekelmann2010}.
+    \item \textbf{Precision drift as biomarker.} Measures of cortical precision weighting (e.g., beta/gamma gain control or
+    confidence calibration) should show progressive rigidity across prolonged wakefulness and reset after REM-rich recovery sleep,
+    paralleling the precision dysregulation curve mapped in extended LLM inference \citep{franklin2023precision}.
+    \item \textbf{Dream bizarreness tracks generalization need.} Tasks that induce strong context overfitting (e.g., immersive VR
+    training or linguistic datasets with skewed statistics) should increase the surreal content of subsequent REM dreams, acting
+    like domain-randomization \citep{hoel2021overfitted}.
+\end{enumerate}
 
-\textit{[Placeholder: Frame 3-4 testable predictions based on the OBH. For example: (1) Stage-timed cueing of a task during REM vs. NREM should produce different outcomes (e.g., generalization vs. fidelity). (2) Naps rich in SWS should improve performance on rote tasks, while naps rich in REM should improve performance on creative/transfer tasks. (3) In unihemispheric sleepers, lateralized training of one eye/hemisphere should be followed by detectably different activity in that specific hemisphere during its "sleep" phase. Insert 1-2 methodological cites for each prediction.]}
+\section{Experimental Designs}\label{sec:falsifiability_experiments}
+These predictions can be tested with tractable protocols:
+\begin{enumerate}
+    \item \textbf{Closed-loop stage suppression.} Use auditory stimulation or targeted awakenings to remove REM during a night
+    following probabilistic-category learning, then probe generalization the next day. Counterbalance with slow-wave suppression
+    after paired-associate learning to verify the double dissociation.
+    \item \textbf{Precision-tracking behavioral batteries.} Alternate blocks of repetition versus switch trials, along with
+    confidence reports, throughout 36~hours of wakefulness to reproduce the dissociation between preserved capacity and failed
+    meta-control \citep{couyoumdjian2010}. Add overnight REM-rich naps to test whether precision weights reset before subjective
+    fatigue resolves.
+    \item \textbf{AI-analogue interventions.} Run transformer continual-learning benchmarks with and without sleep-inspired
+    regularizers (dropout pulses, replay buffers, or attention-noise injections) \citep{chen2023attention_sink, li2024lengthcollapse}. If
+the same interventions that rescue context-length degradation also reduce human precision drift, the computational analogy gains
+predictive traction.
+\end{enumerate}
